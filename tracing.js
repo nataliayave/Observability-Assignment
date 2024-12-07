@@ -15,7 +15,7 @@ const { MongoDBInstrumentation } =
 
 module.exports = (serviceName) => {
     const exporter = new JaegerExporter({
-        serviceName: todo-service,
+        serviceName: serviceName,
         endpoint: "http://localhost:16686/", // Default endpoint for Jaeger
     });
 
