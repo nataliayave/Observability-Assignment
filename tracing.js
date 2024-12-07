@@ -16,7 +16,7 @@ const { MongoDBInstrumentation } =
 module.exports = (serviceName) => {
     const exporter = new JaegerExporter({
         serviceName: serviceName,
-        endpoint: "http://localhost:16686/", // Default endpoint for Jaeger
+        endpoint: "http://localhost:14268/api/traces", // Default endpoint for Jaeger
     });
 
     const provider = new NodeTracerProvider({
