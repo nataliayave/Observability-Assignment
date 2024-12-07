@@ -5,6 +5,7 @@ const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { trace } = require("@opentelemetry/api");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
+const { SimpleSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 // Instrumentations
 const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
@@ -16,7 +17,7 @@ const { MongoDBInstrumentation } =
 module.exports = (serviceName) => {
     const exporter = new JaegerExporter({
         serviceName: serviceName,
-        endpoint: "http://localhost:14268/api/traces", // Default endpoint for Jaeger
+        endpoint: "http://localhost:14268/api/traces", // Jaeger's trace endpoint
     });
 
     const provider = new NodeTracerProvider({
